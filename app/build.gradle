@@ -1,3 +1,6 @@
+// Apply the plugin 不生效，build script里的plugin只在定义的script里有效
+// apply plugin: GreetingPlugin
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'

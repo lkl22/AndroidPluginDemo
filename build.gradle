@@ -1,5 +1,39 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//class GreetingPlugin implements Plugin<Project> {
+//    void apply(Project project) {
+//        // 创建一个task hello
+//        project.task('hello') {
+//            doLast {
+//                // 打印输出log
+//                println 'Hello from the GreetingPlugin'
+//            }
+//        }
+//    }
+//}
 
+class GreetingPluginExtension {
+    String message = 'Hello from GreetingPlugin'
+}
+
+class GreetingPlugin implements Plugin<Project> {
+    void apply(Project project) {
+        // Add the 'greeting' extension object
+        def extension = project.extensions.create('greeting', GreetingPluginExtension)
+        // Add a task that uses configuration from the extension object
+        project.task('hello') {
+            doLast {
+                println extension.message
+            }
+        }
+    }
+}
+
+// Apply the plugin
+apply plugin: GreetingPlugin
+
+// Configure the extension
+greeting.message = 'Hi from Gradle'
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext.kotlin_version = '1.3.72'
     repositories {
