@@ -4,6 +4,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'buildsrc-java-plugin'
+apply plugin: 'buildsrc-groovy-plugin'
 
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION as int

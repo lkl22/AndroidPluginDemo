@@ -9,7 +9,7 @@ Android plugin项目开发demo
 
 您可以直接在构建脚本中包含插件的源代码。 这样的好处是，无需执行任何操作即可自动编译插件并将其包含在构建脚本的类路径中。 但是，该插件在构建脚本之外不可见，因此您不能在定义该构建脚本的外部重用该插件。
 
-2. buildSrc project
+2. [buildSrcProject](docs/buildSrcProject.md)
 
 您可以将插件的源代码放在*rootProjectDir/buildSrc/src/main/groovy*目录（或*rootProjectDir/buildSrc/src/main/java*或*rootProjectDir/buildSrc/src/main/kotlin*中，具体取决于您喜欢的语言）。 Gradle将负责编译和测试插件，并使其在构建脚本的类路径中可用。 该插件对当前构建使用的每个构建脚本都是可见的。 但是，它在构建外部不可见，因此您不能在定义该构建的外部重用该插件。
 

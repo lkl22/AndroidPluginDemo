@@ -1,0 +1,33 @@
+apply plugin: 'groovy'
+
+
+repositories {
+    maven {
+        url uri("${rootProject}/.repo")
+    }
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    maven { url 'https://dl.google.com/dl/android/maven2/' }
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    //gradle sdk
+    implementation gradleApi()
+    //groovy sdk
+    implementation localGroovy()
+
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.android.tools.build:gradle:3.6.3'
+
+    compileOnly 'com.google.android:android:4.1.1.4'
+}
+
+sourceSets {
+    main {
+        java.srcDirs += "src/main/kotlin"
+//        java.srcDirs += "${project.rootDir.parent}/common/src/main/java"
+    }
+}
