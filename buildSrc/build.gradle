@@ -1,5 +1,10 @@
 apply plugin: 'groovy'
 
+Properties props = new Properties()
+props.load(project.file('../gradle.properties').newDataInputStream())
+def isDebugCustomPlugin = props.getProperty('DEBUG_CUSTOM_PLUGIN')
+
+println "是否调试 ${isDebugCustomPlugin}"
 
 repositories {
     maven {
@@ -28,7 +33,10 @@ dependencies {
 sourceSets {
     main {
         java.srcDirs += "src/main/kotlin"
-        java.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/java"
-        resources.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/resources"
+        if (isDebugCustomPlugin) {
+            java.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/java"
+            resources.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/resources"
+            println "引用CustomPlugin模块源码"
+        }
     }
 }

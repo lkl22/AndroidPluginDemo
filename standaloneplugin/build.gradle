@@ -1,5 +1,5 @@
 apply plugin: 'groovy'
-
+apply from: rootProject.file('gradleConfig/publish_local_config.gradle')
 
 repositories {
     maven {

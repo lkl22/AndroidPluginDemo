@@ -37,6 +37,9 @@ greeting.message = 'Hi from Gradle'
 buildscript {
     ext.kotlin_version = '1.3.72'
     repositories {
+        maven {
+            url uri("${rootProject.file('./')}/.repo")
+        }
         mavenLocal()
 //        maven { url 'https://maven.google.com' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
@@ -51,11 +54,18 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        if (!Boolean.valueOf(DEBUG_CUSTOM_PLUGIN)) {
+            classpath 'com.lkl.standaloneplugin:custom-plugin:1.0.0'
+            println "add custom plugin dependency"
+        }
     }
 }
 
 allprojects {
     repositories {
+        maven {
+            url uri("${rootProject.file('./')}/.repo")
+        }
         mavenLocal()
 //        maven { url 'https://maven.google.com' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }

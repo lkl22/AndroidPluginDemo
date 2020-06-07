@@ -1,0 +1,16 @@
+apply plugin: 'maven'
+// ./gradlew :模块名称:clean :模块名称:build :模块名称:uploadArchives -PpublishLib
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri("${rootProject.file('./')}/.repo"))
+            println uri("${rootProject.file("./")}/.repo")
+
+            pom.version = POM_VERSION_NAME
+            pom.artifactId = POM_ARTIFACT_ID
+            pom.groupId = POM_GROUP_ID
+
+            println "upload archives ${POM_GROUP_ID}:${POM_ARTIFACT_ID}:${POM_VERSION_NAME}"
+        }
+    }
+}
