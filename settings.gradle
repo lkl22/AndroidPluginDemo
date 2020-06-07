@@ -1,3 +1,4 @@
 rootProject.name='AndroidPluginDemo'
 include ':app'
 include ':buildSrc'
+include ':standaloneplugin'

@@ -6,6 +6,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'buildsrc-java-plugin'
 apply plugin: 'buildsrc-groovy-plugin'
+apply plugin: 'com.lkl.standaloneplugin.custom-plugin'
 
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION as int

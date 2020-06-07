@@ -28,7 +28,5 @@ dependencies {
 sourceSets {
     main {
         java.srcDirs += "src/main/kotlin"
-        java.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/java"
-        resources.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/resources"
     }
 }
