@@ -4,7 +4,7 @@
 
 自定义插件的构建:
 ``` groovy
-plugins { id 'buildsrc-groovy-plugin' }
+apply plugin: 'groovy'
 
 dependencies {
     implementation gradleApi()
@@ -16,9 +16,9 @@ dependencies {
 目录中提供与插件ID相匹配的属性文件。
 
 ### Wiring for a custom plugin:
-**src/main/resources/META-INF/gradle-plugins/buildsrc-groovy-plugin.properties**
+**src/main/resources/META-INF/gradle-plugins/com.lkl.standaloneplugin.custom-plugin.properties**
 ```properties
-implementation-class=com.lkl.buildsrc.plugin.BuildSrcGroovyPlugin
+implementation-class=implementation-class=com.lkl.standaloneplugin.CustomPlugin
 ```
 请注意，属性文件名与插件ID匹配，并放置在资源文件夹中，并且实现类属性标识插件实现类。该目录下可以放置多个文件，同时实现多个plugin。
 
@@ -94,3 +94,16 @@ public class ExampleUnitTest {
     }
 }
 ```
+
+### 开发调试技巧
+
+建一个buildSrc plugin默认开发模块，在buildSrc模块的build.gradle里指定源码路径为该模块的源码位置。从而达到直接调试standaloneplugin源码的目的。
+```groovy
+if (isDebugCustomPlugin) {
+    java.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/java"
+    resources.srcDirs += "${project.rootDir.parent}/standaloneplugin/src/main/resources"
+    println "引用CustomPlugin模块源码"
+}
+```
+
+plugin开发调试代码，可以参考：[编译时注解调试](https://github.com/lkl22/AndroidAnnotationDemo/blob/master/docs/CompileAnnotationDebug.md)，有一点需要注意的是第二步选择编译task的时候可以灵活的选择，可以根据我们plugin作用于编译时的哪个阶段来选择task，如果不清楚的话，可以直接选择全量最大化的编译task，比如：assemble task。

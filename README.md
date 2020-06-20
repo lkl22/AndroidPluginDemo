@@ -20,3 +20,5 @@ Android plugin项目开发demo
 
 ## 参考文献
 [Developing Custom Gradle Plugins](https://docs.gradle.org/5.6.4/userguide/custom_plugins.html)
+
+[ASM Bytecode Outline](https://plugins.jetbrains.com/plugin/5918-asm-bytecode-outline)
