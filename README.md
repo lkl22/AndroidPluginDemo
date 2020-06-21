@@ -96,7 +96,20 @@ public void transform(TransformInvocation invocation) {
     CustomLogger.info(TRANSFORM + "customExtension: %s", customExtension.toString());
 }
 ```
+
+### [自定义Transform](./docs/gradleTransform.md)
+
+Gradle Transform是Android官方提供给开发者在项目构建阶段即由class到dex转换期间修改class文件的一套api。目前比较经典的应用是字节码插桩、代码注入技术。
+
 ## 参考文献
 [Developing Custom Gradle Plugins](https://docs.gradle.org/5.6.4/userguide/custom_plugins.html)
 
+[Transform API](https://google.github.io/android-gradle-dsl/javadoc/current/)
+
+[Asm官方文档](https://asm.ow2.io/developer-guide.html)
+
 [ASM Bytecode Outline](https://plugins.jetbrains.com/plugin/5918-asm-bytecode-outline)
+
+[一文让你明白Java字节码](https://www.jianshu.com/p/13d18c631549)
+
+[Android Gradle Plugin打包Apk过程中的Transform API](https://www.jianshu.com/p/811b0d0975ef)

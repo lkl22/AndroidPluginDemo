@@ -6,6 +6,7 @@ import com.android.build.api.transform.QualifiedContent;
 import com.android.build.api.transform.Transform;
 import com.android.build.api.transform.TransformInput;
 import com.android.build.api.transform.TransformInvocation;
+import com.android.build.api.variant.VariantInfo;
 import com.android.build.gradle.internal.pipeline.TransformManager;
 import com.google.common.collect.ImmutableSet;
 
@@ -61,8 +62,18 @@ public class CustomTransform extends Transform {
     }
 
     @Override
+    public boolean applyToVariant(VariantInfo variant) {
+        CustomLogger.info(TRANSFORM + " applyToVariant FullVariantName: %s, BuildTypeName: %s, Debuggable: %s, Test: %s",
+                variant.getFullVariantName(),
+                variant.getBuildTypeName(),
+                variant.isDebuggable(),
+                variant.isTest());
+        return variant.isDebuggable();
+    }
+
+    @Override
     public void transform(TransformInvocation invocation) {
-        CustomLogger.info(TRANSFORM + " start...");
+        CustomLogger.info(TRANSFORM + "start...");
         long ms = System.currentTimeMillis();
 //        project.getExtensions().findByName(Const.NAME);
         CustomExtension customExtension = project.getExtensions().findByType(CustomExtension.class);
@@ -71,7 +82,6 @@ public class CustomTransform extends Transform {
 
         CustomLogger.info(TRANSFORM + "cost %s ms", System.currentTimeMillis() - ms);
     }
-
 
 
 }
