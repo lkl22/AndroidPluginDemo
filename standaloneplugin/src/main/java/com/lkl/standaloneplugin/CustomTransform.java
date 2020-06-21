@@ -3,6 +3,7 @@ package com.lkl.standaloneplugin;
 import com.android.SdkConstants;
 import com.android.build.api.transform.Format;
 import com.android.build.api.transform.QualifiedContent;
+import com.android.build.api.transform.Status;
 import com.android.build.api.transform.Transform;
 import com.android.build.api.transform.TransformInput;
 import com.android.build.api.transform.TransformInvocation;
@@ -24,9 +25,12 @@ import org.objectweb.asm.Opcodes;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
@@ -49,6 +53,8 @@ public class CustomTransform extends Transform {
      * com/sankuai/waimai/router/generated/service
      */
     public static final String INIT_SERVICE_PATH = Const.GEN_PKG_SERVICE.replace('.', '/');
+
+    private static List<String> maps = new ArrayList<>();
 
     public CustomTransform(Project project) {
         this.project = project;
@@ -95,9 +101,25 @@ public class CustomTransform extends Transform {
 //        TransformTask transformTask = (TransformTask) invocation.getContext();
         //VariantCache 就是保存一些跟当前variant相关的一些缓存，以及在支持增量编译的情况下存储一些信息
 
+        maps.add("ddd");
+        CustomLogger.info(TRANSFORM + "maps sizes: %d", maps.size());
         if (invocation.isIncremental()) {
             //TODO 增量
             CustomLogger.info(TRANSFORM + "====================增量编译=================");
+            for (TransformInput input : invocation.getInputs()) {
+                input.getJarInputs().parallelStream().forEach(jarInput -> {
+                    Status status = jarInput.getStatus();
+                    CustomLogger.info(TRANSFORM + "change jar status: %s", status.name());
+                });
+
+                input.getDirectoryInputs().parallelStream().forEach(directoryInput -> {
+                    Map<File, Status> changedFiles = directoryInput.getChangedFiles();
+                    for (Map.Entry<File, Status> fileStatusEntry : changedFiles.entrySet()) {
+                        CustomLogger.info(TRANSFORM + "change file path: %s, file status: %s",
+                                fileStatusEntry.getKey().toString(), fileStatusEntry.getValue().name());
+                    }
+                });
+            }
         } else {
             CustomLogger.info(TRANSFORM + "====================非增量编译=================");
             //非增量,需要删除输出目录
