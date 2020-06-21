@@ -113,3 +113,7 @@ Gradle Transform是Android官方提供给开发者在项目构建阶段即由cla
 [一文让你明白Java字节码](https://www.jianshu.com/p/13d18c631549)
 
 [Android Gradle Plugin打包Apk过程中的Transform API](https://www.jianshu.com/p/811b0d0975ef)
+
+[Android Gradle Plugin 源码解析（上）](https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492752&idx=1&sn=1d1ad65c63667d96b72452a492cbde58)
+
+[Android Gradle Plugin 源码解析（下）](https://mp.weixin.qq.com/s?__biz=MzIwMTAzMTMxMg==&mid=2649492778&idx=1&sn=bf18cd9b7e4fb5f08b1a698836807304)
