@@ -101,6 +101,12 @@ public void transform(TransformInvocation invocation) {
 
 Gradle Transform是Android官方提供给开发者在项目构建阶段即由class到dex转换期间修改class文件的一套api。目前比较经典的应用是字节码插桩、代码注入技术。
 
+### [ASM](./docs/asm.md)
+
+`ASM`是一个通用的Java字节码操作和分析框架。它可以直接以二进制形式用于修改现有类或动态生成类。ASM提供了一些常见的字节码转换和分析算法，可以从中构建定制的复杂转换和代码分析工具。ASM提供了与其他Java字节码框架类似的功能，但是侧重于 **性能**。因为它的设计和实现是尽可能的小和尽可能快，所以它非常适合在动态系统中使用（但当然也可以以静态方式使用，例如在编译器中）。
+
+> ASM 可以直接产生二进制 class 文件，也可以在类被加载入 Java 虚拟机之前动态改变类行为。Java class 被存储在严格格式定义的 .class 文件里，这些类文件拥有足够的元数据来解析类中的所有元素：类名称、方法、属性以及 Java 字节码（指令）。ASM 从类文件中读入信息后，能够改变类行为，分析类信息，甚至能够根据用户要求生成新类。说白了asm是直接通过字节码来修改class文件。
+
 ## 参考文献
 [Developing Custom Gradle Plugins](https://docs.gradle.org/5.6.4/userguide/custom_plugins.html)
 
