@@ -6,6 +6,7 @@
   * [Execution model](#Executionmodel)
   * [字节码指令](#字节码指令)
   * [Exception handlers](#Exceptionhandlers)
+  * [Frames](#Frames)
 
 ## <a name="Structure">Structure</a>
 
@@ -66,4 +67,69 @@ catch:
 ```
 
 `try`和`catch`标签之间的代码对应`try块`，而`catch`标签后面的代码对应`catch块`。`TRYCATCHBLOCK`行指定一个异常处理程序，该异常处理程序覆盖try和catch标签之间的范围，处理程序从catch标签开始，对于类是`InterruptedException`子类的异常。这意味着，如果在try和catch之间的任何地方抛出这样的异常，那么堆栈将被清除，该异常将被推送到这个空堆栈上，并在catch处继续执行。
+
+### <a name="Frames">Frames</a>
+
+用Java6或更高版本编译的类除了字节码指令外，还包含一组堆栈映射帧，用于加快Java虚拟机内的类验证过程。堆栈映射帧提供方法在执行期间的某个点的执行帧的状态。更精确地说，它给出了在执行某些特定字节码指令之前，每个局部变量槽和每个操作数堆栈槽中包含的值的类型。
+
+例如，如果我们考虑`getF`方法，我们可以定义三个堆栈映射帧，给出执行帧在`ALOAD`之前、`GETFIELD`之前和`IRETURN`之前的状态。这三个堆栈映射帧对应于图所示的三种情况，可以描述如下，其中第一个方括号之间的类型对应于局部变量，其他方括号之间类型对应于操作数堆栈：
+
+State of the execution frame before |Instruction
+---|---
+[pkg/Bean] [] |ALOAD 0
+[pkg/Bean] [pkg/Bean] |GETFIELD
+[pkg/Bean] [I] |IRETURN
+
+We can do the same for the checkAndSetF method:
+
+State of the execution frame before |Instruction
+---|---
+[pkg/Bean I] [] |ILOAD 1
+[pkg/Bean I] [I] |IFLT label
+[pkg/Bean I] [] |ALOAD 0
+[pkg/Bean I] [pkg/Bean] |ILOAD 1
+[pkg/Bean I] [pkg/Bean I] |PUTFIELD
+[pkg/Bean I] [] |GOTO end
+[pkg/Bean I] [] |label :
+[pkg/Bean I] [] |NEW
+[pkg/Bean I] [Uninitialized(label)] |DUP
+[pkg/Bean I] [Uninitialized(label) Uninitialized(label)] |INVOKESPECIAL
+[pkg/Bean I] [java/lang/IllegalArgumentException] |ATHROW
+[pkg/Bean I] [] |end :
+[pkg/Bean I] [] |RETURN
+
+这与前面的方法类似，只是`Uninitialized(label)`类型除外。这是一种只在堆栈映射帧中使用的特殊类型，**它指定一个内存已分配但尚未调用其构造函数的对象**。参数指定创建此对象的指令。唯一可以对这种类型的值调用的方法是构造函数。当调用它时，该类型在frame中的所有引用都将替换为实类型，这里是IllegalArgumentException。
+
+堆栈映射帧可以使用其他三种特殊类型：
+
+* `UNINITIALIZED_THIS`是构造函数中局部变量0的初始类型
+* `TOP`对应于未定义的值
+* `NULL`对应于NULL
+
+如上所述，从Java6开始，编译的类除了字节码外，还包含一组堆栈映射帧。为了节省空间，编译后的方法不会为每条指令包含一个帧：**事实上，它只包含与跳转目标或异常处理程序相对应的指令的帧，或遵循无条件跳转指令的指令的帧**。其他的frame可以很容易很快地从这些frame中推断出来。
+
+对于checkAndSetF方法，这意味着只存储两个帧：一个用于`NEW`指令，因为它是`IFLT`指令的目标，但也因为它遵循无条件跳转`GOTO`指令；另一个用于`RETURN`指令，因为它是`GOTO`指令的目标，也因为它遵循“无条件跳转”`ATHROW`指令。
+
+为了节省更多的空间，每个帧通过只存储其与前一帧的差来压缩，而初始帧根本不存储，因为它可以很容易地从方法参数类型中推导出来。在checkAndSetF方法里，必须存储的两个帧相等并且等于初始帧，因此它们被存储为`F_SAME`助记符指定的单字节值。这些帧可以在其相关字节码指令之前表示。
+
+这将给出checkAndSetF方法的最终字节码：
+
+```asm
+    ILOAD 1
+    IFLT label
+    ALOAD 0
+    ILOAD 1
+    PUTFIELD pkg/Bean f I
+    GOTO end
+label:
+    F_SAME
+    NEW java/lang/IllegalArgumentException
+    DUP
+    INVOKESPECIAL java/lang/IllegalArgumentException <init> ()V
+    ATHROW
+end:
+    F_SAME
+    RETURN
+```
+
 
