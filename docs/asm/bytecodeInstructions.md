@@ -29,7 +29,22 @@
 *  `ALOAD `用于加载任何非基元值，即对象和数组引用。
 *  `ISTORE `、 `LSTORE `、 `FSTORE `、 `DSTORE `和 `ASTORE `指令对称地从操作数堆栈中弹出一个值，并将其存储在由其索引 `i `指定的局部变量中。
 
+如您所见，`xLOAD`和`xSTORE`指令都是成对的（实际上，正如您将在下面看到的，几乎所有的指令都是成对的）。这用于确保不进行非法转换。实际上，**在局部变量中存储一个值，然后用不同的类型加载它是非法的。** 例如，`ISTORE 1` `ALOAD 1`序列是非法的。
 
+它允许在本地变量1中存储任意内存地址，并将此地址转换为对象引用！这意味着局部变量的类型，即存储在该局部变量中的值的类型，可以在方法执行期间发生变化。
+
+如上所述，所有其他字节码指令只在操作数堆栈上工作。它们可以分为以下几类：
+
+* **[Stack](#Stack)** 这些指令用于操作堆栈上的值：`POP`弹出堆栈顶部的值，`DUP`将顶部堆栈值的副本压栈，`SWAP`弹出两个值并按相反的顺序推送它们，等等。 
+* **[Constants](#Constants)** 这些指令在操作数堆栈上push一个常量值：`ACONST_NULL` pushes null, `ICONST_0` pushes the int value 0, `FCONST_0` pushes 0f, `DCONST_0` pushes 0d, `BIPUSH b` pushes the byte value b, `SIPUSH s` pushes the short value s, `LDC cst` pushes the arbitrary int, float, long, double, String, or class constant cst, etc.
+* **[Arithmetic and logic](#Arithmeticandlogic)** 这些指令从操作数堆栈中弹出数值，将它们组合起来并将结果推送到堆栈上。他们没有任何参数。`xADD`、`xSUB`、`xMUL`、`xDIV`和`xREM`对应于+、-、*、/和%运算，其中x是I、L、F或D。类似地，对于int值和long值，还有其他与<<，>>，>|，&和^对应的指令。
+* **[Casts](#Casts)** 这些指令从堆栈中弹出一个值，将其转换为另一个类型，并将结果推入。它们对应于Java中的强制转换表达式。`I2F`、`F2D`、`L2D`等。将数值从一种数值类型转换为另一种数值类型。`CHECKCAST t` 将引用值转换为类型t。
+* **[Objects](#Objectsfieldsandmethods)** 这些指令用于创建对象、锁定对象、测试其类型等。例如，`NEW type`指令将类型为type的新对象push到堆栈上（其中type是内部名称）。
+* **[Fields](#Objectsfieldsandmethods)** 这些指令读取或写入字段的值。`GETFIELD owner name desc`弹出一个对象引用，并推送其name字段的值。`PUTFIELD owner name desc`弹出一个值和一个对象引用，并将该值存储在其name字段中。在这两种情况下，对象必须是owner类型，并且其字段必须是desc类型。`GETSTATIC`和`PUTSTATIC`是类似的指令，但对于静态字段。
+* **[Methods](#Objectsfieldsandmethods)** 这些指令调用方法或构造函数。它们弹出与方法参数相同的值，再加上目标对象的一个值，并推送方法调用的结果。`INVOKEVIRTUAL owner name desc`调用类所有者中定义的name方法，其方法描述符为desc。`INVOKESTATIC`用于静态方法，`INVOKESPECIAL`用于私有方法和构造函数，`INVOKEINTERFACE`用于接口中定义的方法。最后，对于Java7类，`INVOKEDYNAMIC`用于新的动态方法调用机制。
+* **[Arrays](#Arrays)** 这些指令用于读取和写入数组中的值。`xALOAD`指令弹出一个索引和一个数组，并将数组元素的值推送到该索引处。`xASTORE`指令弹出一个值、一个索引和一个数组，并将该值存储在数组中的该索引处。这里x可以是I、L、F、D或A，也可以是B、C或S。
+* **[Jumps](#Jumps)** 如果某些条件为真或无条件，这些指令将跳转到任意指令。它们用于编译if、for、do、while、break和continue指令。例如，`IFEQ label`从堆栈中弹出一个int值，如果该值为0，则跳到`label`设计的指令（否则将正常执行到下一条指令）。存在许多其他跳转指令，例如`IFNE`或`IFGE`。最后，`TABLESWITCH`和`LOOKUPSWITCH`对应于switch Java指令。
+* **[Return](#Return)** 使用`xRETURN`和`RETURN`指令终止方法的执行并将其结果返回给调用方。`RETURN`用于返回**void**的方法，`xRETURN`用于其他方法。
 
 ## <a name="Localvariables">Local variables</a>
 
