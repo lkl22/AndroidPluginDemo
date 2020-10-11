@@ -5,6 +5,7 @@
 * [Structure](#Structure)
   * [Execution model](#Executionmodel)
   * [字节码指令](#字节码指令)
+  * [Exception handlers](#Exceptionhandlers)
 
 ## <a name="Structure">Structure</a>
 
@@ -29,7 +30,7 @@
 
 当它被创建时，一个frame用一个空堆栈初始化，它的局部变量用目标对象this（对于非静态方法）和方法的参数初始化。例如，调用方法a.equals(b)将创建一个具有空堆栈的帧，并且前两个局部变量初始化为a和b（其他局部变量未初始化）。
 
-`局部变量`和`操作数堆栈`部分中的每个槽可以保存任何Java值，**long和double值除外。插槽需要两个值。**这使局部变量的管理变得复杂：例如，第i个方法参数不一定存储在局部变量i中。例如，调用`Math.max(1L, 2L)`创建一个帧，其中1L值位于前两个局部变量插槽中，值2L位于第三个和第四个插槽中。
+`局部变量`和`操作数堆栈`部分中的每个槽可以保存任何Java值，**long和double值除外。插槽需要两个值**。这使局部变量的管理变得复杂：例如，第i个方法参数不一定存储在局部变量i中。例如，调用`Math.max(1L, 2L)`创建一个帧，其中1L值位于前两个局部变量插槽中，值2L位于第三个和第四个插槽中。
 
 ### <a name="字节码指令">[字节码指令](./bytecodeInstructions.md)</a>
 
@@ -37,4 +38,32 @@
 
 约定：a和b表示int、float、long或double值（例如:IADD为int，LADD为long），o和p表示objet引用，v表示任何值（or，对于堆栈指令，是大小为1的值），w表示long或double，i、j和n表示int值。
 
+### <a name="Exceptionhandlers">Exception handlers</a>
+
+没有字节码指令来捕获异常：相反，方法的字节码与异常处理程序列表相关联，这些异常处理程序指定在方法的给定部分中引发异常时必须执行的代码。异常处理程序类似于`try-catch`块：它有一个范围，它是一个与try-catch块内容相对应的`指令序列`，以及一个与catch块内容相对应的`处理程序`。**范围由开始和结束标签以及带有开始标签的处理程序指定**。例如下面的源代码：
+
+```java
+public static void sleep(long d) {
+    try {
+        Thread.sleep(d);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+can be compiled into:
+
+```asm
+TRYCATCHBLOCK try catch catch java/lang/InterruptedException
+try:
+    LLOAD 0
+    INVOKESTATIC java/lang/Thread sleep (J)V
+    RETURN
+catch:
+    INVOKEVIRTUAL java/lang/InterruptedException printStackTrace ()V
+    RETURN
+```
+
+`try`和`catch`标签之间的代码对应`try块`，而`catch`标签后面的代码对应`catch块`。`TRYCATCHBLOCK`行指定一个异常处理程序，该异常处理程序覆盖try和catch标签之间的范围，处理程序从catch标签开始，对于类是`InterruptedException`子类的异常。这意味着，如果在try和catch之间的任何地方抛出这样的异常，那么堆栈将被清除，该异常将被推送到这个空堆栈上，并在catch处继续执行。
 
