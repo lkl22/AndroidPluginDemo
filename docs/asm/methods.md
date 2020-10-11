@@ -7,6 +7,7 @@
   * [字节码指令](#字节码指令)
   * [Exception handlers](#Exceptionhandlers)
   * [Frames](#Frames)
+* [接口和组件](./methods-Interfaces-components.md)
 
 ## <a name="Structure">Structure</a>
 
@@ -131,5 +132,6 @@ end:
     F_SAME
     RETURN
 ```
+
 
 
