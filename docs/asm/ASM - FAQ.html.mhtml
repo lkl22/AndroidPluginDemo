@@ -1,0 +1,637 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://asm.ow2.io/faq.html
+Subject: ASM - FAQ
+Date: Sun, 11 Oct 2020 07:37:41 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----"
+
+
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----
+Content-Type: text/html
+Content-ID: <frame-3F19394BD737E4F0D568259614FB7559@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://asm.ow2.io/faq.html
+
+<!DOCTYPE html><html><head><meta http-equiv=3D"Content-Type" content=3D"tex=
+t/html; charset=3DUTF-8">
+ =20
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1.0">
+  <title>ASM - FAQ</title>
+  <link rel=3D"stylesheet" type=3D"text/css" href=3D"https://asm.ow2.io/sty=
+le.css">
+</head>
+<body>
+ =20
+<div class=3D"header">
+  <label for=3D"nav-trigger" class=3D"nav-trigger">
+    <img src=3D"https://asm.ow2.io/burger-icon.svg" class=3D"burger-icon">
+  </label>
+  <a href=3D"https://asm.ow2.io/index.html">
+    <img src=3D"https://asm.ow2.io/asm-logo.svg" class=3D"asm-icon">
+  </a>
+  <span class=3D"asm-title">ASM</span>
+  <a href=3D"https://gitlab.ow2.org/asm/asm">
+    <img src=3D"https://asm.ow2.io/gitlab-logo.svg" class=3D"gitlab-icon">
+  </a>
+</div>
+<label for=3D"nav-trigger" class=3D"nav-overlay"></label>
+<nav>
+  <ul>
+    <li><a href=3D"https://asm.ow2.io/index.html">Home</a></li>
+    <li>
+      <a href=3D"https://asm.ow2.io/documentation.html">Documentation</a>
+      <ul>
+        <li><a href=3D"https://asm.ow2.io/asm4-guide.pdf">User guide</a></l=
+i>
+        <li><a href=3D"https://asm.ow2.io/javadoc/overview-summary.html">Ja=
+vadoc</a></li>
+        <li><a href=3D"https://asm.ow2.io/faq.html">FAQ</a></li>
+        <li><a href=3D"https://asm.ow2.io/developer-guide.html">Developer g=
+uide</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href=3D"https://asm.ow2.io/about.html">About</a>
+      <ul>
+        <li><a href=3D"https://asm.ow2.io/license.html">License</a></li>
+        <li><a href=3D"https://asm.ow2.io/publications.html">Publications</=
+a></li>
+        <li><a href=3D"https://asm.ow2.io/versions.html">Versions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+  <div class=3D"page-content">
+    <h1>Frequently Asked Questions</h1>
+    <p>Here are some frequently asked questions about ASM, gathered by <a h=
+ref=3D"mailto:m.proctor@bigfoot.com">Mark Proctor</a>.</p>
+    <ul>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q0">0. How do I start using =
+ASM?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q1">1. How do I remove a met=
+hod/field?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q2">2. How do I replace a me=
+thod/field? I end up with
+        duplicated members!</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q3">3. How do I make ASM cal=
+culate visitMaxs for me?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q4">4. Why do I get the [xxx=
+] verifier error?"</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q5">5. How do I add my bytec=
+ode class to the system class
+        loader?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q6">6. How do I rename my cl=
+ass?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q7">7. How do method descrip=
+tors work?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q8">8. How can ASM help me c=
+reate my descriptor types?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q9">9. How do I generate set=
+ters and getters for my
+        class?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q10">10. How do I get the by=
+tecode of an existing class?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q11">11. How do I generate [=
+some Java code] with ASM?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q12">12. How does the [xxx] =
+bytecode instruction work?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q13">13. Is ASM thread safe?=
+</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q14">14. What is the earlies=
+t JDK required to use ASM?</a>
+      </li>
+      <li>
+        <a href=3D"https://asm.ow2.io/faq.html#Q15">15. How to resolve conf=
+licts between different ASM
+        versions?</a>
+      </li>
+    </ul>
+    <h3><a name=3D"Q0" id=3D"Q0"></a>0. How do I start using ASM?</h3>
+    <p>If you want to use ASM to generate classes from scratch, write a Jav=
+a
+    source file that is representative of the classes you want to generate,
+    compile it(*), and then run the <a href=3D"https://asm.ow2.io/faq.html#=
+Q10">ASMifier</a> on the compiled
+    class to see the Java source code that generates this class with ASM. I=
+f
+    you are using Eclipse it is even easier, thanks to the <a href=3D"https=
+://marketplace.eclipse.org/content/bytecode-outline">Bytecode
+    Outline</a> plugin.</p>
+    <p>If you want to use ASM to transform classes, write two Java source f=
+iles
+    - with and without the features that have to be added or removed, compi=
+le
+    them(*), and then run the <a href=3D"https://asm.ow2.io/faq.html#Q10">A=
+SMifier</a> on both of them. Then
+    compare the results with some visual diff tool. If you are using Eclips=
+e it
+    is even easier, thanks to the compare tool of the <a href=3D"https://ma=
+rketplace.eclipse.org/content/bytecode-outline">Bytecode
+    Outline</a> plugin.</p>
+    <p>(*) Note that javac may produce different code for different -target=
+, so
+    you'll have to compile for your target environment, repeat that excerci=
+se
+    for all required target's or use the earliest bytecode version if
+    possible.</p>
+    <h3><a name=3D"Q1" id=3D"Q1"></a>1. How do I remove a method/field?</h3=
+>
+    <p>Use a ClassVisitor and return nothing:</p>
+    <pre>  public FieldVisitor visitField(String name, ...) {
+    if (removeField(name)) {
+      // Do nothing, in order to remove this field.
+      return null;
+    } else {
+      // Make the next visitor visit this field, in order to keep it.
+      return super.visitField(name, ...);
+    }
+  }</pre>
+    <h3><a name=3D"Q2" id=3D"Q2"></a>2. How do I replace a method/field? I =
+end up
+    with duplicated members!</h3>
+    <p>You must either return the replacement method/field when you visit t=
+he
+    original one using a ClassVisitor, or you must first remove the origina=
+l
+    method/field in the ClassVisitor (see <a href=3D"https://asm.ow2.io/faq=
+.html#Q1">"1. How do I remove a
+    method/field?"</a>), and then add the new method/field by calling a vis=
+it
+    method on the ClassWriter.</p>
+    <h3><a name=3D"Q3" id=3D"Q3"></a>3. How do I make ASM calculate visitMa=
+xs for
+    me?</h3>
+    <p>When calling the constructor for ClassWriter use the COMPUTE_MAXS fl=
+ag.
+    You must also still include the visitMaxs method call, but the values y=
+ou
+    give are ignored, so visitMaxs(0,0) is fine.</p>
+    <h3><a name=3D"Q4" id=3D"Q4"></a>4. Why do I get the [xxx] verifier err=
+or?</h3>
+    <p>If the message given by the JVM class verifier does not help you, yo=
+u
+    can use the verifier provided by ASM. For example, if you use a wrong
+    constant when making "return" on a method, or if you do not use the
+    appropriate LOAD or STORE instruction, depending on the local variable
+    type, the JVM class verifier gives a "Register x contains wrong type" o=
+r
+    "Expecting to find x on stack" error which does not say anything about =
+the
+    instruction that caused the error. In this case you can use the class
+    verifier provided by ASM:</p>
+    <p><code>java -cp "asm.jar;asm-tree.jar;asm-analysis.jar;asm-util.jar"
+    org.objectweb.asm.util.CheckClassAdapter
+    org/domain/package/YourClass.class</code></p>
+    <p>which produces outputs such as the following:</p>
+    <pre>org.objectweb.asm.tree.analysis.AnalyzerException:
+    Error at instruction 2: Argument 1: expected Ljava/lang/String;, but fo=
+und I
+        at org.objectweb.asm.tree.analysis.Analyzer.analyze(...)
+        at org.objectweb.asm.util.CheckClassAdapter.verify(...)
+        at org.objectweb.asm.util.CheckClassAdapter.main(...)
+        ...
+main([Ljava/lang/String;)V
+00000 String .  :  :     GETSTATIC java/lang/System.out : Ljava/io/PrintStr=
+eam;
+00001 String .  : PrintStream  :     LDC 1234
+00002 String .  : PrintStream I  :     INVOKEVIRTUAL java/io/PrintStream.pr=
+intln
+    (Ljava/lang/String;)V
+00003 ?     :     RETURN</pre>
+    <p>This shows that the error comes from instruction 2 in method main. T=
+he
+    instruction list shows that this instruction is INVOKEVIRTUAL. It also
+    shows the types of the local variables and of the operand stack values =
+just
+    before this instruction will be executed (here local variable 0 contain=
+s a
+    String, local variable 1 is not initialized, and the stack contains a
+    PrintStream and an int - I stands for int, as in type descriptors). As
+    explained in the error message, the println method called by INVOKEVIRT=
+UAL
+    expects a String as first argument, but the stack value corresponding t=
+o
+    this argument is an int. Then either the INVOKEVIRTUAL instruction is
+    wrong, or the instruction that pushed the integer is wrong.</p>
+    <p>If your class is so "corrupted" that you cannot read it with a
+    ClassReader, try to generate it by using a CheckClassAdapter in front o=
+f a
+    ClassWriter:</p>
+    <pre>  ClassWriter classWriter =3D new ClassWriter(0);
+  ClassVisitor classVisitor =3D new CheckClassAdapter(classWriter);
+  // Generate your class here:
+  classVisitor.visit(...);
+  ...</pre>
+    <p>You will probably get an exception which will indicate why your
+    generated class is incorrect. For example, if you forget to call visit(=
+...)
+    (which can happen if you forget to call super.visit(...) in a class
+    visitor), the generated class contains an invalid constant pool index, =
+and
+    ClassReader is unable to read it. If you generate your class by using a
+    CheckClassAdapter, as above, you get an exception "Cannot visit member
+    before visit has been called.", which shows that you forgot to call the
+    visit method.</p>
+    <h3><a name=3D"Q5" id=3D"Q5"></a>5. How do I add my bytecode class to t=
+he
+    system class loader?</h3>
+    <p>You must first have the permissions to do this, as defined in the po=
+licy
+    file - there are no security restrictions by default for a standard jav=
+a
+    install. Then use ClassLoader.defineClass, via reflection to gain acces=
+s to
+    it (this is a protected method):</p>
+    <pre>  private Class loadClass(byte[] b) {
+    // Override defineClass (as it is protected) and define the class.
+    Class clazz =3D null;
+    try {
+      ClassLoader loader =3D ClassLoader.getSystemClassLoader();
+      Class cls =3D Class.forName("java.lang.ClassLoader");
+      java.lang.reflect.Method method =3D
+          cls.getDeclaredMethod(
+              "defineClass",=20
+              new Class[] { String.class, byte[].class, int.class, int.clas=
+s });
+
+      // Protected method invocation.
+      method.setAccessible(true);
+      try {
+        Object[] args =3D=20
+            new Object[] { className, b, new Integer(0), new Integer(b.leng=
+th)};
+        clazz =3D (Class) method.invoke(loader, args);
+      } finally {
+        method.setAccessible(false);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      System.exit(1);
+    }
+    return clazz;
+  }</pre>
+    <p>Alternatively you can create your own ClassLoader by extending the
+    existing class loader (example needed here).</p>
+    <h3><a name=3D"Q6" id=3D"Q6"></a>6. How do I rename my class?</h3>
+    <p>It is not enough to rename just the class, you must also rename all =
+the
+    references to class members. The ClassRemapper in org.objectweb.asm.com=
+mons
+    can do this for you.</p>
+    <h3><a name=3D"Q7" id=3D"Q7"></a>7. How do method descriptors work?</h3=
+>
+    <p>To understand this best it's good to read the source code of Type.ja=
+va.
+    Here is a quick overview:</p>
+    <ul>
+      <li>Primitive representations:
+        <ul>
+          <li>'V' - void</li>
+          <li>'Z' - boolean</li>
+          <li>'C' - char</li>
+          <li>'B' - byte</li>
+          <li>'S' - short</li>
+          <li>'I' - int</li>
+          <li>'F' - float</li>
+          <li>'J' - long</li>
+          <li>'D' - double</li>
+        </ul>
+      </li>
+      <li>Class representations:
+        <ul>
+          <li>L&lt;class&gt;;</li>
+          <li>Ljava/io/ObjectOutput;</li>
+          <li>Ljava/lang/String;</li>
+        </ul>
+      </li>
+    </ul>
+    <p>Examples:</p>
+    <ul>
+      <li>public void method(): <code>()V</code></li>
+      <li>public void method(String s, int i):
+      <code>(Ljava/lang/String;I)V</code></li>
+      <li>public String method(String s, int i, boolan
+      flag):<code>(Ljava/lang/String;IZ)Ljava/lang/String;</code></li>
+    </ul>
+    <h3><a name=3D"Q8" id=3D"Q8"></a>8. How can ASM help me create my descr=
+iptor
+    types?</h3>
+    <p>Type.java provides the static method Type.getDescriptor, which takes=
+ a
+    Class as a parameter.</p>
+    <p>Examples:</p>
+    <ul>
+      <li><code>String desc =3D Type.getDescriptor(String.class);</code></l=
+i>
+      <li><code>String desc =3D Type.getDescriptor(int.class);</code></li>
+      <li><code>String desc =3D
+      Type.getDescriptor(java.io.ObjectOutput.class);</code></li>
+    </ul>
+    <h3><a name=3D"Q9" id=3D"Q9"></a>9. How do I generate setters and gette=
+rs for
+    my class?</h3>
+    <p>Use the following code (this assumes that visitMaxs are computed by =
+ASM
+    - see <a href=3D"https://asm.ow2.io/faq.html#Q3">"3. How do I make ASM =
+calculate visitMaxs for
+    me?"</a>):</p>
+    <pre>void createSetter(String propertyName, String type, Class c) {
+  String methodName =3D "set" + propertyName.substring(0, 1).toUpperCase()=
+=20
+      + propertyName.substring(1);
+  MethodVisitor mv =3D=20
+      cw.visitMethod(ACC_PUBLIC, methodName, "(" + type + ")V", null, null)=
+;
+  mv.visitVarInsn(ALOAD, 0);
+  mv.visitVarInsn(Type.getType(c).getOpcode(ILOAD), 1);
+  mv.visitFieldInsn(PUTFIELD, className, propertyName, type);
+  mv.visitInsn(RETURN);
+  mv.visitMaxs(0, 0);
+}
+
+void createGetter(String propertyName, String returnType, Class c) {
+  String methodName =3D "get" + propertyName.substring(0, 1).toUpperCase()=
+=20
+      + propertyName.substring(1);
+  MethodVisitor mv =3D=20
+      cw.visitMethod(ACC_PUBLIC, methodName, "()" + returnType, null, null)=
+;
+  mv.visitVarInsn(ALOAD, 0);
+  mv.visitFieldInsn(GETFIELD, internalClassName, propertyName, returnType);
+  mv.visitInsn(Type.getType(c).getOpcode(IRETURN));
+  mv.visitMaxs(0, 0);
+}</pre>
+    <h3><a name=3D"Q10" id=3D"Q10"></a>10. How do I get the bytecode of an =
+existing
+    class?</h3>
+    <p>If you want the bytecode instructions themselves, use a Textifier. I=
+f
+    you want the ASM code to generate these bytecode instructions, use an
+    ASMifier. Both classes provide a "main" method to allow them to be call=
+ed
+    from the command line, passing your fully qualified class name as a
+    parameter. Example:</p>
+    <p><code>java -classpath "asm.jar;asm-util.jar;yourjar.jar"
+    org.objectweb.asm.util.Textifier org.domain.package.YourClass</code></p=
+>
+    <p>or</p>
+    <p><code>java -classpath "asm.jar;asm-util.jar"
+    org.objectweb.asm.util.ASMifier
+    org/domain/package/YourClass.class</code></p>
+    <p>Another, much easier method, if you are using Eclipse, is to use the
+    <a href=3D"https://marketplace.eclipse.org/content/bytecode-outline">By=
+tecode
+    Outline</a> plugin.</p>
+    <h3><a name=3D"Q11" id=3D"Q11"></a>11. How do I generate [some Java cod=
+e] with
+    ASM?</h3>
+    <p>If you want to know how to generate a synchronized block, a try catc=
+h
+    block, a finally statement, or any other Java construct, write the Java
+    code you want to generate in a temporary class, compile it with javac, =
+and
+    then use the ASMifier to get the ASM code that will generate this class
+    (see <a href=3D"https://asm.ow2.io/faq.html#Q10">"10. How do I get the =
+bytecode of an existing
+    class?"</a>).</p>
+    <h3><a name=3D"Q12" id=3D"Q12"></a>12. How does the [xxx] bytecode inst=
+ruction
+    work?</h3>
+    <p>All the bytecode instructions are specified in <a href=3D"https://do=
+cs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html">chapter
+    6</a> of the Java Virtual Machine Specification.</p>
+    <h3><a name=3D"Q13" id=3D"Q13"></a>13. Is ASM thread safe?</h3>
+    <p>The Type and ClassReader classes are thread safe, i.e. several threa=
+ds
+    can use a single Type object or a single ClassReader object concurrentl=
+y
+    without problems. The ClassWriter and MethodWriter classes are <em>not<=
+/em>
+    thread safe, i.e. a single class cannot be generated by several concurr=
+ent
+    threads (but, of course, several threads can generate distinct classes
+    concurrently, if each thread uses its own ClassWriter instance). In ord=
+er
+    to generate a single class by using several concurrent threads, one sho=
+uld
+    use ClassVisitor and MethodVisitor instances that delegate to normal
+    ClassWriter and MethodWriter instances, and whose methods are all
+    synchronized.</p>
+    <p>More generally, ClassVisitor and MethodVisitor implementations, such=
+ as
+    ClassWriter, do not have to be thread safe. However, non thread safe
+    visitors can be made thread safe just by using a synchronizing class
+    adapter in front of them.</p>
+    <h3><a name=3D"Q14" id=3D"Q14"></a>14. What is the earliest JDK require=
+d to use
+    ASM?</h3>
+    <p>ASM requires a JDK 1.5 or above.</p>
+    <h3><a name=3D"Q15" id=3D"Q15"></a>15. How to resolve conflicts between
+    different ASM versions?</h3>
+    <p>You can repackage ASM within your own namespace, which can be automa=
+ted
+    with the <a href=3D"https://github.com/shevek/jarjar">Jar Jar Links</a>
+    tool.</p>
+  </div>
+
+
+</body></html>
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://asm.ow2.io/style.css
+
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css?family=3DRaleway:400,200,700|=
+Open+Sans:400,700");
+
+html { font-family: "Open Sans"; font-size: 14px; line-height: 1.4285; colo=
+r: rgb(51, 51, 51); }
+
+body { margin: 0px; }
+
+h1, h2, h3 { font-family: Raleway; font-weight: 200; line-height: 1.1; colo=
+r: rgb(0, 158, 255); }
+
+h1 { font-size: 34px; }
+
+h2 { font-size: 26px; }
+
+h3 { font-size: 23px; }
+
+p { margin: 0px 0px 16px; }
+
+a { color: rgb(0, 158, 255); text-decoration: none; }
+
+a:hover, a:focus { color: rgb(0, 111, 179); text-decoration: underline; }
+
+b { font-weight: 700; }
+
+pre { width: 80ch; padding: 8px; background-color: rgb(250, 250, 250); }
+
+.header { display: flex; height: 50px; color: rgb(119, 119, 119); backgroun=
+d-color: rgb(240, 240, 240); border-bottom: 1px solid rgb(200, 200, 200); f=
+lex-direction: row; align-items: center; }
+
+.burger-icon { height: 24px; padding: 8px 16px; cursor: pointer; }
+
+.asm-icon, .gitlab-icon { height: 42px; padding: 4px 8px; }
+
+.asm-title { padding-left: 8px; font-size: 34px; flex-grow: 1; }
+
+.nav-overlay { display: none; position: fixed; left: 0px; top: 0px; right: =
+0px; bottom: 0px; background-color: rgba(255, 255, 255, 0.9); z-index: 1; }
+
+nav { position: fixed; width: 200px; left: 0px; top: 0px; bottom: 0px; back=
+ground-color: rgb(250, 250, 250); border-right: 1px solid rgb(200, 200, 200=
+); box-shadow: rgb(229, 229, 229) 0px 0px 0px inset, rgba(0, 0, 0, 0.1) 2px=
+ 0px 3px; transform: translateX(-100%); overflow-y: auto; z-index: 2; }
+
+#nav-trigger:checked ~ .nav-overlay { display: block; }
+
+#nav-trigger:checked ~ nav { transform: none; }
+
+nav ul, nav li { margin: 0px; padding: 0px; }
+
+nav a { text-decoration: none; color: rgb(112, 112, 112); display: block; f=
+ont-size: 14px; padding: 12px 0px 12px 24px; }
+
+nav li li a { padding-left: 48px; }
+
+nav a:hover { color: rgb(255, 255, 255); background-color: rgb(0, 158, 255)=
+; text-decoration: none; }
+
+.page-content { margin: 24px; }
+
+@media (min-width: 1088px) {
+  .page-content { max-width: 840px; margin: 24px auto; }
+}
+
+@media (min-width: 50em) {
+  .header { position: fixed; left: 0px; top: 0px; right: 0px; z-index: 1; }
+  .nav-trigger { display: none; }
+  nav { top: 51px; box-shadow: initial; transform: none; }
+  .page-content { padding-top: 50px; padding-left: 200px; }
+  :target { padding-top: 50px; margin-top: -50px; }
+}
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://fonts.googleapis.com/css?family=Raleway:400,200,700|Open+Sans:400,700
+
+@charset "utf-8";
+=0A
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://asm.ow2.io/burger-icon.svg
+
+<?xml version=3D"1.0" ?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphic=
+s/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns=3D"http://www.w3.org/2000/svg" viewBox=3D"0 0 32 32"
+    height=3D"32px" width=3D"32px">
+  <path d=3D"M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,=
+8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0=
+.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.10=
+4,0,2-0.896,2-2  S29.104,22,28,22z"/>
+</svg>=0A
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://asm.ow2.io/asm-logo.svg
+
+<?xml version=3D"1.0" ?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphic=
+s/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns=3D"http://www.w3.org/2000/svg" viewBox=3D"0 0 167.604 184.253"=
+=20
+    height=3D"196.536" width=3D"178.777">
+  <g fill-rule=3D"evenodd">
+    <path d=3D"M7.087 47.834v17.717l61.373 35.434v17.717L7.087 83.268v53.14=
+8L83.8 180.71V92.125L7.087 47.835zm15.343 62.008l46.03 26.574v17.717L22.43 =
+127.56v-17.717z" fill=3D"#008be0"/>
+    <path d=3D"M7.087 47.835l76.715 44.291 46.029-26.575-61.372-35.433 15.3=
+43-8.858 61.372 35.433 15.343-8.858L83.802 3.543 37.773 30.118l61.372 35.43=
+3-15.343 8.858L22.43 38.976z" fill=3D"#009eff"/>
+    <path d=3D"M83.802 180.709l15.343-8.859v-70.866l15.343-8.858v70.866l15.=
+343-8.858V65.55L83.802 92.126zM145.174 145.276l15.343-8.859V47.835l-15.343 =
+8.858z" fill=3D"#0077c0"/>
+    <path d=3D"M129.831 136.417l15.343 8.859V56.693L83.802 21.26 68.46 30.1=
+18l61.372 35.433z" fill=3D"#e05400"/>
+    <path d=3D"M37.773 30.118v17.717l46.03 26.574 15.342-8.858z" fill=3D"#e=
+05400"/>
+    <path d=3D"M7.087 83.268l15.343-8.859 46.03 26.575v17.717z" fill=3D"#ff=
+6000"/>
+    <path d=3D"M99.145 154.134l15.343 8.858V92.126l-15.343 8.858z" fill=3D"=
+#e05400"/>
+    <path d=3D"M22.43 127.56l15.343-8.86-15.343-8.857z" fill=3D"#c04800"/>
+    <path d=3D"M68.46 154.134v-17.717l-30.687-17.716-15.343 8.858z" fill=3D=
+"#ff6000"/>
+  </g>
+</svg>=0A
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://asm.ow2.io/gitlab-logo.svg
+
+<?xml version=3D"1.0" ?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphic=
+s/SVG/1.1/DTD/svg11.dtd'>
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"700" height=3D"700">
+  <g fill=3D"none" fill-rule=3D"evenodd">
+    <path d=3D"M591.199 379.225L563.64 294.41l-54.617-168.097c-2.81-8.648-1=
+5.046-8.648-17.856 0L436.548 294.41H255.181l-54.62-168.097c-2.809-8.648-15.=
+045-8.648-17.856 0L128.088 294.41l-27.557 84.815a18.775 18.775 0 0 0 6.82 2=
+0.992l238.513 173.29 238.515-173.29a18.777 18.777 0 0 0 6.82-20.992" fill=
+=3D"#FC6D26"/>
+    <path d=3D"M345.865 573.506l90.684-279.096H255.18l90.684 279.096z" fill=
+=3D"#E24329"/>
+    <path d=3D"M345.865 573.506L255.18 294.41H128.089l217.776 279.095z" fil=
+l=3D"#FC6D26"/>
+    <path d=3D"M128.089 294.41l-27.56 84.815a18.773 18.773 0 0 0 6.822 20.9=
+91l238.514 173.29L128.089 294.41z" fill=3D"#FCA326"/>
+    <path d=3D"M128.089 294.411H255.18l-54.62-168.097c-2.81-8.65-15.046-8.6=
+5-17.855 0L128.089 294.41z" fill=3D"#E24329"/><path d=3D"M345.865 573.506l9=
+0.684-279.095H563.64L345.865 573.506z" fill=3D"#FC6D26"/>
+    <path d=3D"M563.64 294.41l27.559 84.815a18.773 18.773 0 0 1-6.821 20.99=
+1l-238.514 173.29L563.64 294.41z" fill=3D"#FCA326"/>
+    <path d=3D"M563.64 294.411H436.548l54.619-168.097c2.81-8.65 15.047-8.65=
+ 17.856 0L563.64 294.41z" fill=3D"#E24329"/>
+  </g>
+</svg>=0A
+------MultipartBoundary--XGKnsMvsf8sxhpUfQrwIwB3u4wtNvRNiCinVIS08da------

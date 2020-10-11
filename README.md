@@ -112,9 +112,7 @@ Gradle Transform是Android官方提供给开发者在项目构建阶段即由cla
 
 [Transform API](https://google.github.io/android-gradle-dsl/javadoc/current/)
 
-[Asm官方文档](https://asm.ow2.io/developer-guide.html)
-
-[https://asm.ow2.io/javadoc/overview-summary.html](https://asm.ow2.io/javadoc/overview-summary.html)
+[http://www.groovy-lang.org/documentation.html](http://www.groovy-lang.org/documentation.html)
 
 [ASM Bytecode Outline](https://plugins.jetbrains.com/plugin/5918-asm-bytecode-outline)
 
