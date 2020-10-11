@@ -1,5 +1,6 @@
 # 字节码指令 Bytecode instructions
 
+* [简介](#简介)
 * [Local variables](#Localvariables)
 * [Stack](#Stack)
 * [Constants](#Constants)
@@ -9,6 +10,25 @@
 * [Arrays](#Arrays)
 * [Jumps](#Jumps)
 * [Return](#Return)
+
+## <a name="简介">简介</a>
+
+字节码指令由标识该指令的操作码以及固定数量的参数构成
+
+* 操作码是一个无符号字节值，因此是字节码名称，并由助记符号标识。例如，操作码值0'是由助记符NOP标识的，与不执行任何操作的指令相对应。
+* 参数是定义精确指令行为的静态值。它们在操作码之后给出。例如，操作码值为167的'GOTO label'指令将'label'作为参数，指定下一条要执行的指令的标签。**不要将指令参数与指令操作数混淆：参数值是静态已知的，并存储在编译的代码中，而操作数值来自操作数堆栈，只有在运行时才知道。**
+
+字节码指令可分为两类：
+* 一小部分指令用于将值从局部变量传输到操作数堆栈，反之亦然；
+* 其他指令仅作用于操作数堆栈：它们从堆栈中弹出一些值，根据这些值计算结果，然后将其推回到堆栈中。
+
+局部变量与操作数堆栈传输指令：
+* 'ILOAD'、'LLOAD'、'FLOAD'、'DLOAD'和'ALOAD'指令读取局部变量并将其值推送到操作数堆栈上。它们将必须读取的局部变量的索引 'i' 作为参数。
+* 'ILOAD'用于加载'boolean'、'byte'、'char'、'short'或'int'局部变量。
+* 'LLOAD'、'FLOAD'和'DLOAD'分别用于加载'long'、'float'或'double'值（'LLOAD'和'DLOAD'实际加载两个插槽'i'和'i+1'）。
+* 'ALOAD'用于加载任何非基元值，即对象和数组引用。
+* 'ISTORE'、'LSTORE'、'FSTORE'、'DSTORE'和'ASTORE'指令对称地从操作数堆栈中弹出一个值，并将其存储在由其索引'i'指定的局部变量中。
+
 
 
 ## <a name="Localvariables">Local variables</a>
@@ -86,7 +106,7 @@
     	<td>... , <b>w</b> , v , w</td>
     </tr>
     <tr >
-    	<td rowspan="2">DUP2_X2</td>
+    	<td rowspan="4">DUP2_X2</td>
     	<td>... , v1 , v2 , v3 , v4</td>
     	<td>... , <b>v3 , v4 </b>, v1 , v2 , v3 , v4</td>
     </tr>
@@ -108,12 +128,12 @@
 
 Instruction |Stack before |Stack after
 ---|---|---
-ICONST_n (−1<= n <=  5) |... |... , n
-LCONST_n (0 <= n <=  1) |... |... , nL
-FCONST_n (0 <= n <= 2) |... |... , nF
-DCONST_n (0 <= n <= 1) |... |... , nD
-BIPUSH b, −128 <= b < 127 |... |... , b
-SIPUSH s, −32768 <= s < 32767 |... |... , s
+ICONST_n (−1 <= n <= 5) |... |... , n
+LCONST_n (0 <= n <= 1) |... |... , nL
+FCONST_n (0 <= n <= 2) |... |... , nF
+DCONST_n (0 <= n <= 1) |... |... , nD
+BIPUSH b, −128 <= b < 127 |... |... , b
+SIPUSH s, −32768 <= s < 32767 |... |... , s
 LDC cst (int, float, long, double, String or Type) |... |... , cst
 ACONST_NULL |... |... , null
 
